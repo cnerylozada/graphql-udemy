@@ -1,9 +1,13 @@
 import { Query, Resolver } from '@nestjs/graphql';
+import { Todo } from './todos.entity';
+import { TodosService } from './todos.service';
 
 @Resolver()
 export class TodosResolver {
-  @Query((returns) => String)
-  async getHello() {
-    return 'hello world';
+  constructor(private todosService: TodosService) {}
+
+  @Query(() => [Todo])
+  async getAllTodos() {
+    return this.todosService.getAllTodos();
   }
 }

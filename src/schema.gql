@@ -2,6 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Todo {
+  id: Int!
+  task: String!
+  isDone: Boolean!
+}
+
 type Query {
-  getHello: String!
+  getAllTodos: [Todo!]!
 }
