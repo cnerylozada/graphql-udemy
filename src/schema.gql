@@ -11,3 +11,11 @@ type Todo {
 type Query {
   getAllTodos: [Todo!]!
 }
+
+type Mutation {
+  saveTodo(newTodo: CreateTodoDto!): Todo!
+}
+
+input CreateTodoDto {
+  task: String!
+}

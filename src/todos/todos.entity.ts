@@ -14,5 +14,5 @@ export class Todo {
 
   @Column({ type: 'boolean', default: false })
   @Field((type) => Boolean)
-  isDone: boolean;
+  isDone?: boolean = false;
 }
