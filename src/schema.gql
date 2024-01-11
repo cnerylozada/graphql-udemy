@@ -27,4 +27,5 @@ input CreateTodoDto {
 input UpdateTodoDto {
   task: String
   description: String
+  isDone: Boolean
 }

@@ -29,4 +29,9 @@ export class UpdateTodoDto {
   @MinLength(10)
   @Field(() => String, { nullable: true })
   description?: string;
+
+  @IsOptional()
+  @IsOptional()
+  @Field(() => Boolean, { nullable: true })
+  isDone?: boolean;
 }

@@ -3,7 +3,7 @@ import { Todo } from './todos.entity';
 import { TodosService } from './todos.service';
 import { CreateTodoDto, UpdateTodoDto } from './todos.dto';
 
-@Resolver()
+@Resolver(() => Todo)
 export class TodosResolver {
   constructor(private todosService: TodosService) {}
 
