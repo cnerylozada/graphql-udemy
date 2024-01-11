@@ -5,17 +5,26 @@
 type Todo {
   id: Int!
   task: String!
+  description: String!
   isDone: Boolean!
 }
 
 type Query {
   getAllTodos: [Todo!]!
+  getTodoById(id: Int!): Todo!
 }
 
 type Mutation {
   saveTodo(newTodo: CreateTodoDto!): Todo!
+  updateTodo(id: Int!, editedTask: UpdateTodoDto!): Todo!
 }
 
 input CreateTodoDto {
   task: String!
+  description: String!
+}
+
+input UpdateTodoDto {
+  task: String
+  description: String
 }

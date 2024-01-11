@@ -12,6 +12,10 @@ export class Todo {
   @Field()
   task: string;
 
+  @Column()
+  @Field()
+  description: string;
+
   @Column({ type: 'boolean', default: false })
   @Field((type) => Boolean)
   isDone?: boolean = false;
