@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Todo } from './todos.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateTodoDto, UpdateTodoDto } from './todos.dto';
+import { CreateTodoDto, OptionalsArgs, UpdateTodoDto } from './todos.dto';
 
 @Injectable()
 export class TodosService {
@@ -11,7 +11,9 @@ export class TodosService {
     private todosRepository: Repository<Todo>,
   ) {}
 
-  getAllTodos() {
+  getAllTodos(optionals: OptionalsArgs) {
+    if (typeof optionals.onlyDone !== undefined)
+      return this.todosRepository.findBy({ isDone: optionals.onlyDone });
     return this.todosRepository.find();
   }
 

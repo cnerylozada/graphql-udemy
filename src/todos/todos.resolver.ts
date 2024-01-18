@@ -1,15 +1,15 @@
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Todo } from './todos.entity';
 import { TodosService } from './todos.service';
-import { CreateTodoDto, UpdateTodoDto } from './todos.dto';
+import { CreateTodoDto, OptionalsArgs, UpdateTodoDto } from './todos.dto';
 
 @Resolver(() => Todo)
 export class TodosResolver {
   constructor(private todosService: TodosService) {}
 
   @Query(() => [Todo])
-  async getAllTodos() {
-    return this.todosService.getAllTodos();
+  async getAllTodos(@Args() optionals: OptionalsArgs) {
+    return this.todosService.getAllTodos(optionals);
   }
 
   @Query(() => Todo)

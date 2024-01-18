@@ -1,5 +1,11 @@
-import { Field, InputType } from '@nestjs/graphql';
-import { IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
+import { ArgsType, Field, InputType } from '@nestjs/graphql';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MinLength,
+} from 'class-validator';
 
 @InputType()
 export class CreateTodoDto {
@@ -34,4 +40,12 @@ export class UpdateTodoDto {
   @IsOptional()
   @Field(() => Boolean, { nullable: true })
   isDone?: boolean;
+}
+
+@ArgsType()
+export class OptionalsArgs {
+  @IsOptional()
+  @IsBoolean()
+  @Field(() => Boolean, { nullable: true })
+  onlyDone?: boolean;
 }
