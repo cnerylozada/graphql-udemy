@@ -17,6 +17,11 @@ export class TodosService {
     return this.todosRepository.find();
   }
 
+  async getTotalTodosDone() {
+    const todos = await this.todosRepository.find();
+    return todos.filter((_) => !!_.isDone).length;
+  }
+
   async getTodoById(todoId: number) {
     const todo = await this.todosRepository.findOneBy({ id: todoId });
     if (!todo) throw new NotFoundException(`Not found todo for id: ${todoId}`);

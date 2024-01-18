@@ -12,6 +12,11 @@ export class TodosResolver {
     return this.todosService.getAllTodos(optionals);
   }
 
+  @Query(() => Int, { name: 'numberTodosDone' })
+  async getTotalTodosDone() {
+    return this.todosService.getTotalTodosDone();
+  }
+
   @Query(() => Todo)
   getTodoById(@Args('id', { type: () => Int }) id: number) {
     return this.todosService.getTodoById(id);
